@@ -361,3 +361,51 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Dependency directories
+node_modules/
+vcpkg_installed/
+
+# Production build directory
+public/build/
+dist/
+
+# Local development
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Vite
+.vite/
+.vitepress/dist
+
+# Svelte
+.svelte/
+
+# Testing
+coverage/
+
+# Optional: Include lock files if you prefer not to track them in version control
+# package-lock.json
+# yarn.lock
+
+# Vcpkg specific
+/vcpkg
+!vcpkg/scripts/
+!vcpkg/ports/
+!vcpkg.json
+!vcpkg-configuration.json
