@@ -10,18 +10,17 @@
 
 int main()
 {
-	ImageBuffer sharedBuffer;
+	ImageBuffer sharedImageBuffer;
 	std::atomic<bool> running(true);
 
-	WebStatus web_status(sharedBuffer, running);
-	ScreenCapture capture(sharedBuffer, running);
-	ScreenDetection detection(sharedBuffer, running);	
+	WebStatus web_status(sharedImageBuffer, running);
+	ScreenCapture capture(sharedImageBuffer, running);
+	ScreenDetection detection(sharedImageBuffer, running);	
 
 	std::thread web_status_thread(&WebStatus::run_server, &web_status);
 	std::thread capture_thread(&ScreenCapture::capture_loop, &capture);
 	std::thread detection_thread(&ScreenDetection::detection_loop, &detection);	
 
-	std::cout << "Press enter to stop" << std::endl;
 	std::cin.get();
 
 	// Signal the capture/detection/web status loop to stop

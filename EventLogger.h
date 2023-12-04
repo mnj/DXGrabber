@@ -9,7 +9,7 @@ struct LogEvent
 {
 	long long timestamp;
 	std::string description;
-	LogEvent() : timestamp(0), description("") {}
+	LogEvent() : timestamp(0) {}
 	LogEvent(long long ts, std::string desc) : timestamp(ts), description(std::move(desc)) {}
 };
 

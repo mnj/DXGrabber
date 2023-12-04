@@ -68,8 +68,8 @@ void WebStatus::run_server() const
 
 	drogon::app().addListener("0.0.0.0", 8888);
 	drogon::app().addListener("::", 8888);
-	std::cout << "Web server is listening on http://localhost:8888" << std::endl;	
-
+	std::cout << "Web server is listening on http://localhost:8888" << std::endl;
+	std::cout << "Press enter to exit" << std::endl;
 
 	auto timerIdPtr = std::make_shared<trantor::TimerId>();
 
