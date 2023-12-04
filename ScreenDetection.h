@@ -9,7 +9,7 @@ private:
 	ImageBuffer& sharedImageBuffer;
 	std::atomic<bool>& running;
 public:
-	ScreenDetection(ImageBuffer& sharedImageBuffer, std::atomic<bool>& running);
-	void detectionLoop();
+	ScreenDetection(ImageBuffer& shared_image_buffer, std::atomic<bool>& running);
+	void detection_loop();
 };
 

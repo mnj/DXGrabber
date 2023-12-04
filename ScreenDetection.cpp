@@ -7,7 +7,7 @@ ScreenDetection::ScreenDetection(ImageBuffer& sharedImageBuffer, std::atomic<boo
 	// Init detection stuff
 }
 
-void ScreenDetection::detectionLoop()
+void ScreenDetection::detection_loop()
 {
 	while (running)
 	{

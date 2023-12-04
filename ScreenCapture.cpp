@@ -7,7 +7,7 @@ ScreenCapture::ScreenCapture(ImageBuffer& sharedImageBuffer, std::atomic<bool>& 
 	// Init DX stuff
 }
 
-void ScreenCapture::captureLoop()
+void ScreenCapture::capture_loop()
 {
 	while (running)
 	{

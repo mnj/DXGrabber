@@ -13,13 +13,13 @@ int main()
 	ImageBuffer sharedBuffer;
 	std::atomic<bool> running(true);
 
-	WebStatus webStatus(sharedBuffer, running);
+	WebStatus web_status(sharedBuffer, running);
 	ScreenCapture capture(sharedBuffer, running);
 	ScreenDetection detection(sharedBuffer, running);	
 
-	std::thread webStatusThread(&WebStatus::run_server, &webStatus);
-	std::thread captureThread(&ScreenCapture::captureLoop, &capture);
-	std::thread detectionThread(&ScreenDetection::detectionLoop, &detection);	
+	std::thread web_status_thread(&WebStatus::run_server, &web_status);
+	std::thread capture_thread(&ScreenCapture::capture_loop, &capture);
+	std::thread detection_thread(&ScreenDetection::detection_loop, &detection);	
 
 	std::cout << "Press enter to stop" << std::endl;
 	std::cin.get();
@@ -28,19 +28,19 @@ int main()
 	running = false;
 
 	// Wait for the capture/detection/web status loop to finish
-	if (captureThread.joinable())
+	if (capture_thread.joinable())
 	{
-		captureThread.join();
+		capture_thread.join();
 	}
 
-	if (detectionThread.joinable())
+	if (detection_thread.joinable())
 	{
-		detectionThread.join();
+		detection_thread.join();
 	}
 
-	if (webStatusThread.joinable())
+	if (web_status_thread.joinable())
 	{
-		webStatusThread.join();
+		web_status_thread.join();
 	}
 
 	std::cout << "Application exiting..." << std::endl;

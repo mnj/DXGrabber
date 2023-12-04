@@ -26,8 +26,9 @@ WebStatus::WebStatus(ImageBuffer& sharedBuffer, std::atomic<bool>& running) : sh
 	html_index = read_html_file("Index.html");
 }
 
-void WebStatus::setup_routes()
+void WebStatus::setup_routes() const
 {
+	// The main dashboard UI (index.html)
 	drogon::app().registerHandler("/",
 		[this](const drogon::HttpRequestPtr& req,
 		       std::function<void(const drogon::HttpResponsePtr&)>&& callback) {
@@ -35,45 +36,31 @@ void WebStatus::setup_routes()
 				const auto resp = drogon::HttpResponse::newHttpResponse();
 				resp->setBody(html_index);
 				callback(resp);
-
-			/*auto events = EventLogger::getInstance().getAllEvents();
-
-				std::string responseBody = "<html><body><h1>Web Status</h1><p>Latest Events:</p><ul>";
-				for (auto& event : events)
-				{
-					responseBody += "<li>" + event + "</li>";
-				}
-				responseBody += "</ul></body></html>";
-
-				auto resp = drogon::HttpResponse::newHttpResponse();
-				resp->setBody(responseBody);
-				// reload every 1 second
-				resp->addHeader("Refresh", "1");
-				callback(resp);*/
 		});
 
+	// API endpoints
 	drogon::app().registerHandler("/api/events",
 		[this](const drogon::HttpRequestPtr& req,
 			std::function<void(const drogon::HttpResponsePtr&)>&& callback) {
 
-				auto events = EventLogger::getInstance().getAllEvents();
-				Json::Value jsonArray;
+				const auto events = EventLogger::getInstance().getAllEvents();
+				Json::Value json_array;
 				for(const auto& event : events)
 				{
 					Json::Value jsonEvent;
 					jsonEvent["timestamp"] = event.timestamp;
 					jsonEvent["description"] = event.description;
-					jsonArray.append(jsonEvent);
+					json_array.append(jsonEvent);
 				}
 
 				const auto resp = drogon::HttpResponse::newHttpResponse();
 				resp->setContentTypeCode(drogon::ContentType::CT_APPLICATION_JSON);
-				resp->setBody(jsonArray.toStyledString());
+				resp->setBody(json_array.toStyledString());
 				callback(resp);
 		});
 }
 
-void WebStatus::run_server()
+void WebStatus::run_server() const
 {
 	setup_routes();
 

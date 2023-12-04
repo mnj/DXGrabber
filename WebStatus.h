@@ -11,7 +11,7 @@ private:
 	std::string html_index;
 public:
 	WebStatus(ImageBuffer& sharedBuffer, std::atomic<bool>& running);
-	void run_server();
-	void setup_routes();
+	void run_server() const;
+	void setup_routes() const;
 };
 

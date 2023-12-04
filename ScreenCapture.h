@@ -13,5 +13,5 @@ private:
 
 public:
 	ScreenCapture(ImageBuffer& sharedImageBuffer, std::atomic<bool>& running);
-	void captureLoop();
+	void capture_loop();
 };
