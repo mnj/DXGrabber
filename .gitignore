@@ -409,3 +409,5 @@ coverage/
 !vcpkg/ports/
 !vcpkg.json
 !vcpkg-configuration.json
+
+uploads/
