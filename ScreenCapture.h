@@ -6,12 +6,12 @@
 class ScreenCapture
 {
 private:
-	ImageBuffer& sharedBuffer;
+	ImageBuffer& sharedImageBuffer;
 	std::atomic<bool>& running;
 
 	// DX11/12 stuff
 
 public:
-	ScreenCapture(ImageBuffer& sharedBuffer, std::atomic<bool>& running);
+	ScreenCapture(ImageBuffer& sharedImageBuffer, std::atomic<bool>& running);
 	void captureLoop();
 };

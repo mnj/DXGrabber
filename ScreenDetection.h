@@ -6,10 +6,10 @@
 class ScreenDetection
 {
 private:
-	ImageBuffer& sharedBuffer;
+	ImageBuffer& sharedImageBuffer;
 	std::atomic<bool>& running;
 public:
-	ScreenDetection(ImageBuffer& sharedBuffer, std::atomic<bool>& running);
+	ScreenDetection(ImageBuffer& sharedImageBuffer, std::atomic<bool>& running);
 	void detectionLoop();
 };
 

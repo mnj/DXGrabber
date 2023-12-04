@@ -1,9 +1,8 @@
 #include "ScreenDetection.h"
 
-#include <iostream>
 #include "EventLogger.h"
 
-ScreenDetection::ScreenDetection(ImageBuffer& sharedBuffer, std::atomic<bool>& running) : sharedBuffer(sharedBuffer), running(running)
+ScreenDetection::ScreenDetection(ImageBuffer& sharedImageBuffer, std::atomic<bool>& running) : sharedImageBuffer(sharedImageBuffer), running(running)
 {
 	// Init detection stuff
 }
@@ -12,14 +11,13 @@ void ScreenDetection::detectionLoop()
 {
 	while (running)
 	{
-		if (sharedBuffer.getLatestFrame())
+		if (sharedImageBuffer.getLatestFrame())
 		{
 			// Do detection stuff
 		}
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(250));
-		EventLogger::getInstance().logEvent("Detecting loop");
-		//std::cout << "Detection loop" << std::endl;
+		std::this_thread::sleep_for(std::chrono::milliseconds(150));
+		EventLogger::getInstance().logEvent("Detecting loop");		
 	}
 
 	// Release detection stuff
