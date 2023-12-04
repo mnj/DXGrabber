@@ -17,7 +17,7 @@ void ScreenCapture::captureLoop()
 
 		// Sleep 25ms
 		std::this_thread::sleep_for(std::chrono::milliseconds(250));
-		std::cout << "Capture loop" << std::endl;
+		//std::cout << "Capture loop" << std::endl;
 	}
 
 	// Release DX stuff

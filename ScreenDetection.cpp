@@ -17,7 +17,7 @@ void ScreenDetection::detectionLoop()
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(250));
-		std::cout << "Detection loop" << std::endl;
+		//std::cout << "Detection loop" << std::endl;
 	}
 
 	// Release detection stuff
