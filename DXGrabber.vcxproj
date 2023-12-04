@@ -98,6 +98,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -202,12 +206,16 @@
     <ClCompile Include="WebStatus.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EventLogger.h" />
     <ClInclude Include="ImageBuffer.h" />
     <ClInclude Include="ScreenCapture.h" />
     <ClInclude Include="ScreenDetection.h" />
     <ClInclude Include="WebStatus.h" />
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="Index.html">
+      <DeploymentContent>true</DeploymentContent>
+    </CopyFileToFolders>
     <None Include="vcpkg.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

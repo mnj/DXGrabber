@@ -1,6 +1,7 @@
 #include "ScreenDetection.h"
 
 #include <iostream>
+#include "EventLogger.h"
 
 ScreenDetection::ScreenDetection(ImageBuffer& sharedBuffer, std::atomic<bool>& running) : sharedBuffer(sharedBuffer), running(running)
 {
@@ -17,6 +18,7 @@ void ScreenDetection::detectionLoop()
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(250));
+		EventLogger::getInstance().logEvent("Detecting loop");
 		//std::cout << "Detection loop" << std::endl;
 	}
 

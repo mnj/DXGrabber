@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="HTML">
+      <UniqueIdentifier>{03bedd35-7349-4e32-a7ce-a9874d1c36bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXGrabber.cpp">
@@ -44,8 +47,16 @@
     <ClInclude Include="WebStatus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EventLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="vcpkg.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Index.html">
+      <Filter>HTML</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

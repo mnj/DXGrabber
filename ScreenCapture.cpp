@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "EventLogger.h"
+
 ScreenCapture::ScreenCapture(ImageBuffer& sharedBuffer, std::atomic<bool>& running) : sharedBuffer(sharedBuffer), running(running)
 {
 	// Init DX stuff
@@ -17,6 +19,7 @@ void ScreenCapture::captureLoop()
 
 		// Sleep 25ms
 		std::this_thread::sleep_for(std::chrono::milliseconds(250));
+		EventLogger::getInstance().logEvent("Capture loop");
 		//std::cout << "Capture loop" << std::endl;
 	}
 
